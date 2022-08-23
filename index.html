@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+ <title>Interactive</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #8FBC8F;
+            transition: all .25s;
+            font-family: system-ui;
+            color: white;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        button {
+            border: 1px solid black;
+            padding: 15px 20px;
+            border-radius: 20px;
+            background: transparent;
+            cursor: pointer;
+            outline: none;
+        }
+      
+      h1 {
+         font-size: 6vw;
+      }
+
+        h1, h3 {
+            animation: down 1s;
+        }
+
+        button {
+            animation: up 1s;
+        }
+
+        @keyframes down {
+            from {
+                transform: translateY(-50px);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes up {
+            from {
+                transform: translateY(50px);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>Hi, Kira</h3>
+        <h1>Time now 12:12:12</h1>
+        <button>Change background</button>
+    </div>
+    <script>
+        const name = prompt('Your name: ')
+        document.querySelector('h3').textContent = 'Hi, ' + name
+        document.querySelector('h1').textContent = 'Time now ' + new Date().toLocaleTimeString()
+
+        setInterval(function() {
+            document.querySelector('h1').textContent = 'Time now ' + new Date().toLocaleTimeString()
+        }, 1000)
+
+        const colors = ['#2F4F4F', '#FFDAB9', '#FFC0CB', '#8FBC8F']
+        let index = 0
+
+        document.querySelector('button').onclick = function() {
+            document.body.style.background = colors[index]
+            index++
+            if (index >= colors.length) index = 0
+        }
+    </script>
+</body>
+</html>
+
